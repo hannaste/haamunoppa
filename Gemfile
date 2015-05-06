@@ -28,7 +28,7 @@ gem 'rake', '~> 0.9.6'
 #
 # $ rhc env set BUNDLE_WITHOUT="development test postgresql"
 #
-group :development, :test do
+group :development, :test, :production do
   gem 'sqlite3'
   gem 'minitest'
   gem 'thor'
@@ -61,7 +61,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+#gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Gemfile for creating users for Haamunoppa
 gem 'devise', '~> 3.4.1'
