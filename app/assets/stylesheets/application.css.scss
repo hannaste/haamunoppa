@@ -1,0 +1,123 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  background: RGB(240,240,240);
+}
+
+.jumbotron {
+  background: RGB(9,38,55);
+  color: RGB(240,240,240);
+  font-weight: 100;
+}
+
+#bs-example-navbar-collapse-1 a  {
+  color: RGB(180,18,79);
+}
+
+#haamunoppa {
+  color: RGB(180,18,79);
+}
+
+.btn {
+  background-color: RGB(180,18,79);
+  border-color: RGB(180,18,79);
+  color: RGB(240,240,240);
+}
+
+.btn:hover {
+  background: RGB(180,18,79);
+  border-color: RGB(180,18,79);
+  color: RGB(0,0,0);
+}
+
+#image {
+  float: left; 
+  height: 50px;
+  width: 50px;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 100;
+}
+
+a {
+  font-weight: 200;
+  color: RGB(180,18,79);
+}
+
+a:hover {
+  color: RGB(232,21,100);
+}
+
+label {
+  font-weight: 200;
+}
+
+.smallLink {
+  font-size: 16px;
+}
+
+.navbar-text {
+ text-align: right; 
+}
+
+.review_title {
+	margin: 0 0 20px 0;
+}
+
+.reviews {
+	padding: 15px 0;
+	border-bottom: 1px solid #EAEAEA;
+	.star-rating {
+		padding-bottom: 8px;
+	}
+}
+
+.review_table {
+	padding: 10px 10px;
+}
+
+/* The arrows for sorting the courses in index page*/
+
+#arrow th .asc:after {
+  width: 0;
+  height: 0;
+  content: "";
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #333;
+  position: absolute;
+  margin-top: 7px;
+  margin-left: 5px;
+}
+
+#arrow th .desc:after {
+  width: 0;
+  height: 0;
+  content: "";
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #333;
+  position: absolute;
+  margin-top: 7px;
+  margin-left: 5px;
+}
+

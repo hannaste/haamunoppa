@@ -1,0 +1,36 @@
+<div class="col-md-6 col-md-offset-3 centered">
+<h2>Rekisteröidy</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :nimimerkki %><br />
+    <%= f.email_field :name, required: true, autofocus: true, :size=>"50", placeholder: "esim. Olli Opiskelija tai Oltsu89"  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sähköpostiosoite %><i> (ei näy muille käyttäjille)</i><br />
+    <%= f.email_field :email, required: true, :size=>"50" , placeholder: "esim. olli.opiskelija@aalto.fi" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :salasana %>
+    <% if @validatable %>
+    <em>(vähintään <%= @minimum_password_length %> merkkiä)</em>
+    <% end %><br />
+    <%= f.password_field :password, required: true, autocomplete: "off", :size=>"50" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :salasana_uudestaan %><br />
+    <%= f.password_field :password_confirmation, required: true, autocomplete: "off", :size=>"50" %></br>
+  </div>
+
+  <div class="actions">
+    </br><%= f.submit "Rekisteröidy", class: "btn btn-default" %></br>
+  </div>
+<% end %>
+
+</br><%= render "devise/shared/links" %></br>
+</div>

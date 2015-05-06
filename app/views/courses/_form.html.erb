@@ -1,0 +1,44 @@
+<%= form_for(@course) do |f| %>
+  <% if @course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% @course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nimi %><br>
+    <%= f.text_field :name, :size=>"50", placeholder: "esim. Design of WWW Services" %>
+  </div>
+  <div class="field">
+    <%= f.label :kurssikoodi %><br>
+    <%= f.text_field :code, :size=>"50", placeholder: "esim. T-111.4360" %>
+  </div>
+  <div class="field">
+    <%= f.label :kuvaus %><br>
+    <%= f.text_area :description, :size=>"53x10", placeholder: "esim. During the course you will go through the whole whole process of creating a finalized WWW service ready to be used by external users." %>
+  </div>
+  <div class="field">
+    <%= f.label :opintopisteet %><br>
+    <%= f.number_field :credits, :size=>"50", placeholder: "esim. 4"  %>
+  </div>
+  <div class="field">
+    <%= f.label :opetusperiodi %><br>
+    <%= f.text_field :period, :size=>"50", placeholder: "esim. 3-5"  %>
+  </div>
+  <div class="field">
+    <%= f.label :laitos %><br>
+    <%= f.text_field :department, :size=>"50", placeholder: "esim. Mediatekniikan laitos"  %>
+  </div></br>
+  <div class="actions">
+    <%= f.button :Tallenna, class: "btn btn-default"%></br>
+  </div>
+
+
+<% end %>
+

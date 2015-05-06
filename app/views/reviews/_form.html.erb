@@ -1,0 +1,37 @@
+<%= form_for([@course, @review]) do |f| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Kokonaisarvosana %><br>
+    <div id="star-rating"></div><br>
+  </div>
+   <div class="field">
+    <%= f.label :'Milloin osallistuit kurssille?' %><br>
+     <%= f.text_field :attended, :size=>"50", placeholder: "esim. Syksy 2014" %>
+  </div>
+  <div class="field">
+    <%= f.label :Kommentti%><br>
+    <%= f.text_area :comment, :size=>"53x10", placeholder: "Kirjoita kommentti tähän. Kerro esimerkiksi seuraavista asioista: kurssin työläys, mitä kurssisuorituksen eteen piti tehdä, mitä opit kurssilla sekä yleisiä mielipiteitä kurssista, sen järjestelystä ja henkilökunnasta."%></br>
+  </div>
+  <div class="actions">
+    <%= f.button :Tallenna, class: "btn btn-default"%>
+    </br>
+  </div>
+<% end %>
+
+<script>
+  $('#star-rating').raty({
+    path: '/assets/',
+    scoreName: 'review[rating]'
+  });
+</script>

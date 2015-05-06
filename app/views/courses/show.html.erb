@@ -1,0 +1,103 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @course.code %> <%= @course.name %></h1>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    
+    <div class="row">
+      <div class="col-md-4">
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td><strong>Opintopisteet:</strong></td>
+                <td><%= @course.credits %></td>
+              </tr>
+              <tr>
+                <td><strong>Opetusperiodi:</strong></td>
+                <td><%= @course.period %></td>
+              </tr>
+              <tr>
+                <td><strong>Laitos:</strong></td>
+                <td><%= @course.department %></td>
+              </tr>
+              <tr>
+                <td><strong>Keskiarvo:</strong></td>
+                <td><div class="star-rating" data-score= <%= @avg_review %> ></div><em><%= "#{@reviews.length} jätettyä arviointia" %></em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-md-7 col-md-offset-1">
+        <p><strong>Kurssikuvaus:</strong></br><%= @course.description %></p>
+        <% if !@reviews.blank? %>
+        <%= link_to "Arvostele kurssi", new_course_review_path(@course), class: "btn btn-default"%> </br>
+        <% end %>
+        <% if user_signed_in? %>
+        <% case current_user.role %>
+         <% when 'admin' %>
+        <%= link_to 'Muokkaa kurssia', edit_course_path(@course) %>
+        <% end %>
+        <% end %>
+      </div>
+
+    </div>
+
+      <div class="row">
+        <div class="col-md-8">
+        <% if @reviews.blank? %>
+          <h3>Kurssia ei ole vielä arvosteltu, jätä ensimmäinen arvostelu!</h3>
+          <%= link_to "Arvostele kurssi", new_course_review_path(@course), class: "btn btn-danger" %>
+        <% else %>
+          <% @reviews.each do |review| %>
+          <div class="reviews">
+            <table>
+            <tr>
+              <td><div class="star-rating" data-score= <%= review.rating %> ></div></td>
+              <td class="review_table"><p><i><%= review.created_at.strftime("%d.%m.%Y") %></i></p></td>
+              <td><p><i><%= review.user.name %></i></p></td>
+              <% if user_signed_in? %>
+                <% case current_user.role %>
+                 <% when 'admin' %>
+                  <td><%= link_to 'Poista', [review.course, review],
+               method: :delete,
+               data: { confirm: 'Oletko varma, että haluat poistaa kommentin?' } %></td>
+               <% end %>
+                <% end %>
+            </tr>
+          </table>
+            <p><i><%= review.attended %></i></p>
+            <p><%= review.comment %></p>
+       
+
+          </div>
+          <% end %>
+          <% end %>
+
+
+
+        </div>
+      </div>
+      <div class="col-md-4">
+      </div>
+    </br>
+      <%= link_to 'Takaisin etusivulle', courses_path %>
+  </div>
+</div>
+
+
+
+<script>
+    $('.star-rating').raty({
+      path: '/assets/',
+      readOnly: true,
+      score: function() {
+            return $(this).attr('data-score');
+    }
+  });
+</script>
+
+
