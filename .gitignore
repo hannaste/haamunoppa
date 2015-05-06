@@ -12,6 +12,7 @@
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
+<<<<<<< HEAD
 /log/*
 !/log/.keep
 /tmp
@@ -50,3 +51,7 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+=======
+/log/*.log
+/tmp
+>>>>>>> c919cddc801cda0445392fd75877d346c38fb89d
